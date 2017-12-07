@@ -11,6 +11,7 @@
 add_action("wp_enqueue_scripts", "custom_avis_scripts");
 function custom_avis_scripts(){
     wp_enqueue_script("avis_script", plugin_dir_url("./")."/avis/script.js", array( "jquery" ));
+    wp_enqueue_style( "avis_styles", plugin_dir_url( "./" )."/avis/styles.css" );
 }
 
 //Actions hooks
@@ -63,8 +64,10 @@ function display_shortcode( $atts ){
 
             $avis_html .= "<div class='simple-avis'>";
                 $avis_html .= "<img src='".$thumbnail_url."' />";
-                $avis_html .= "<h3>".$title."</h3>";
-                $avis_html .= "<p>".$content."</p>";
+                $avis_html .= "<div class='right-content'>";
+                    $avis_html .= "<h3>".$title."</h3>";
+                    $avis_html .= "<p>".$content."</p>";
+                $avis_html .= "</div>";
             $avis_html .= "</div>";
         }
 
